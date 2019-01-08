@@ -9,8 +9,10 @@ public class Projectile extends GameObject {
 	}
 
 	public void update() {
-		
-		
+		y-=speed;
+		if (y < 0) {
+			isAlive = false;
+		}
 	}
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);

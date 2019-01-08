@@ -18,7 +18,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont;
 	Font subFont;
 	Rocketship rocket = new Rocketship(250, 700, 50, 50);
-	ObjectManager ob = new ObjectManager(rocket);
+	ObjectManager om = new ObjectManager(rocket);
 	
 
 	public GamePanel() {
@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void updateGameState() {
-		ob.update();
+		om.update();
 	}
 
 	public void updateEndState() {
@@ -58,7 +58,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
-		ob.draw(g);
+		om.draw(g);
 	}
 
 	public void drawEndState(Graphics g) {
@@ -130,6 +130,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			rocket.x+=rocket.speed;
 		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			om.addProjectile(new Projectile(rocket.x+20, rocket.y, 10, 10));
+			
+		}
+		
 	}
 
 	@Override
